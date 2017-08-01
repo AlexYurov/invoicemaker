@@ -1,0 +1,33 @@
+﻿<Window x:Class="InvoiceMaker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InvoiceMaker" WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock Text="Prefix" Width="120" VerticalAlignment="Center" />
+                <TextBox Name="InvoicePrefixTextBox" Height="24" Width="60" Text="DC" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock Text="Invoice #" Width="120" VerticalAlignment="Center" />
+                <TextBox Name="InvoiceNumberTextBox" Height="24" Width="60" Text="15" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock Text="Date" Width="120" VerticalAlignment="Center" />
+                <TextBox Name="InvoiceDateTextBox" Height="24" Width="60" Text="15" />
+            </StackPanel>
+            <Grid HorizontalAlignment="Stretch">
+                
+            </Grid>
+        </StackPanel>
+        <Button Grid.Row="1" Content="Generate" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,20,0,0" Width="100" Height="24" Click="ButtonBase_OnClick"></Button>
+    </Grid>
+</Window>
