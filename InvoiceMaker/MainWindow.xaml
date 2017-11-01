@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InvoiceMaker" WindowStartupLocation="CenterScreen"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        mc:Ignorable="d" Loaded="MainWindow_OnLoaded"
+        Title="MainWindow" Height="200" Width="300">
     <Grid Margin="12">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -13,21 +13,21 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <TextBlock Text="Prefix" Width="120" VerticalAlignment="Center" />
-                <TextBox Name="InvoicePrefixTextBox" Height="24" Width="60" Text="DC" />
+                <TextBlock Text="Prefix" Width="100" VerticalAlignment="Center" />
+                <TextBox Name="InvoicePrefixTextBox" Height="24" Width="60" Text="DC" VerticalContentAlignment="Center" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <TextBlock Text="Invoice #" Width="120" VerticalAlignment="Center" />
-                <TextBox Name="InvoiceNumberTextBox" Height="24" Width="60" Text="15" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,8,0,0">
+                <TextBlock Text="Invoice #" Width="100" VerticalAlignment="Center" />
+                <TextBox Name="InvoiceNumberTextBox" Height="24" Width="60" Text="" VerticalContentAlignment="Center" TextChanged="OnInvoiceNumberTextBoxTextChanged" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <TextBlock Text="Date" Width="120" VerticalAlignment="Center" />
-                <TextBox Name="InvoiceDateTextBox" Height="24" Width="60" Text="15" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,8,0,0">
+                <TextBlock Text="Date Range" Width="100" VerticalAlignment="Center" />
+                <TextBlock Name="InvoiceDateTextBlock" Height="24" />
             </StackPanel>
             <Grid HorizontalAlignment="Stretch">
                 
             </Grid>
         </StackPanel>
-        <Button Grid.Row="1" Content="Generate" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,20,0,0" Width="100" Height="24" Click="ButtonBase_OnClick"></Button>
+        <Button Grid.Row="1" Content="Generate" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,20,0,0" Width="100" Height="24" Click="OnGenerateButtonClick"></Button>
     </Grid>
 </Window>
