@@ -26,7 +26,9 @@ namespace InvoiceMaker
     {
         private readonly List<BillableUnit> _units;
 
-        //https://app.hubstaff.com/reports/my/time_and_activities?utf8=%E2%9C%93&date=2017-10-01&date_end=2017-10-31&user_id=55290&group_by=date&filters%5Bshow_tasks%5D=1&filters%5Bshow_activity%5D=1&filters%5Bsum_date_ranges%5D=1&filters%5Bshow_notes%5D=1&filters%5Bshow_spent%5D=1&filters%5Bshow_billable%5D=&filters%5Binclude_archived%5D=1
+        //https://app.hubstaff.com/reports/my/time_and_activities?utf8=%E2%9C%93&date=2019-02-28&date_end=2019-03-31&user_id=55290&group_by=date&filters%5Bshow_tasks%5D=1&filters%5Bshow_activity%5D=1&filters%5Bsum_date_ranges%5D=1&filters%5Bshow_notes%5D=1&filters%5Bshow_spent%5D=1&filters%5Bshow_billable%5D=&filters%5Binclude_archived%5D=1
+
+        // https://app.hubstaff.com/reports/24572/my/time_and_activities?date=2019-02-28&date_end=2019-03-31&group_by=date&item_type=apps_and_urls&filters%5Binclude_archived%5D=1&filters%5Bshow_activity%5D=1&filters%5Bshow_notes%5D=1&filters%5Bshow_spent%5D=1&filters%5Bshow_tasks%5D=1&filters%5Bsum_date_ranges%5D=true
         //TODO: Open in web
         //TODO: Chrome anonymous tabs
 
@@ -37,18 +39,14 @@ namespace InvoiceMaker
             _units = new List<BillableUnit>
             {
                 new BillableUnit {Id = Constants.ID_AYurov, Description = Constants.Description_Dev, Price = 34.0},//ayurov
-                new BillableUnit {Id = Constants.ID_BShchudlo, Description = Constants.Description_Dev, Price = 17.75 },//bshchudlo
-                new BillableUnit {Id = Constants.ID_IPopkov, Description = Constants.Description_Dev, Price = 12.0 },//ipopkov
-                new BillableUnit {Id = Constants.ID_ADvoretska, Description = Constants.Description_Content, Price = 8.32 },//advoretska
-                new BillableUnit {Id = Constants.ID_OGaiduchok, Description = Constants.Description_DataAnalysis, Price = 12.0 },//ogaiduchok
-                new BillableUnit {Id = Constants.ID_ShKassal, Description = Constants.Description_QualityAssurance, Price = 7.53 },//shkassal
-                //new BillableUnit {Id = 0, Description = Constants.Description_Design, Price = 16.0 },//kvynnytska
+                new BillableUnit {Id = Constants.ID_OVasylyk, Description = Constants.Description_Dev, Price = 10.0 },//ovasylyk
             };
         }
 
         private async void OnGenerateButtonClick(object sender, RoutedEventArgs e)
         {
-            await ProcessUnits(99266, _invoiceStartDate, _invoiceStartDate.AddMonths(1).Subtract(TimeSpan.FromSeconds(1)));
+            //await ProcessUnits(99266, _invoiceStartDate, _invoiceStartDate.AddMonths(1).Subtract(TimeSpan.FromSeconds(1)));
+            await ProcessUnits(99266, new DateTime(2019, 02, 28), new DateTime(2019, 3, 31));
             var paymentRows = _units
                 .Select((unit, i) =>
                     new ReportGroupTableRow
@@ -142,7 +140,13 @@ namespace InvoiceMaker
             var defaultFileName = $"{InvoicePrefixTextBox.Text}_{_invoiceNumber}{ext}";
             var outputFilePath = System.IO.Path.GetFullPath(defaultFileName);
             var resultFilePath = outputFilePath;
-            XmlConverter.Convert(report, outputFilePath, FileSaveFormat.Docx, ConverterEngineType.Word);
+            var settings = new ReportConversionParameters
+            {
+                EngineType = ConverterEngineType.Word,
+                Format = FileSaveFormat.Docx,
+                OutputFilePath = outputFilePath
+            };
+            XmlConverter.Convert(report, settings);
             var dialog = new SaveFileDialog
             {
                 InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "OneDrive", "Contracts"),

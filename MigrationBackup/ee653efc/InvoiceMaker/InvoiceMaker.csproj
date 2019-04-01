@@ -37,6 +37,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -91,6 +95,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -101,21 +106,22 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\MyAssays\myassays\MyAssays\MyAssays.Data.Persistence\MyAssays.Data.Persistence.Component.csproj">
+      <Project>{0b6c4d6c-e817-43fc-bddd-0778dd6015a6}</Project>
+      <Name>MyAssays.Data.Persistence.Component</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\MyAssays\myassays\MyAssays\MyAssays.Data\MyAssays.Data.Component.csproj">
+      <Project>{4afe0241-8f2c-4548-b5b6-29897b211cfc}</Project>
+      <Name>MyAssays.Data.Component</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\MyAssays\net-report-xml-conversion\SourceCode\MyAssays.ReportXmlConversion\MyAssays.ReportXmlConversion.Component.csproj">
+      <Project>{b4c0436b-49bb-45b2-83f9-fbae5caa3725}</Project>
+      <Name>MyAssays.ReportXmlConversion.Component</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\hubstaff-reporter\HubstaffReport\HubstaffReport.Core\HubstaffReport.Core.csproj">
       <Project>{528be333-8055-4862-9f37-a1e5945b15a3}</Project>
       <Name>HubstaffReport.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="MyAssays.Data">
-      <Version>5.0.69.779</Version>
-    </PackageReference>
-    <PackageReference Include="MyAssays.ReportXmlConversion">
-      <Version>5.0.69.779</Version>
-    </PackageReference>
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>11.0.2</Version>
-    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

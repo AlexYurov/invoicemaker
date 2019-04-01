@@ -12,10 +12,6 @@ namespace InvoiceMaker
         public const string Description_Design = "Graphic design services";
 
         public const int ID_AYurov = 55290;
-        public const int ID_BShchudlo = 115639;
-        public const int ID_IPopkov = 95815;
-        public const int ID_ADvoretska = 63497;
-        public const int ID_OGaiduchok = 139623;
-        public const int ID_ShKassal = 220283;
+        public const int ID_OVasylyk = 334982;
     }
 }
